@@ -22,6 +22,12 @@ router.put('/students/:id', function (req,res) {
   });
 });
 
+router.delete('/students/:id', function (req,res) {
+  Student.findOneAndDelete(req.params.id).then((student) =>{
+    res.render('student',{student});
+  });
+});
+
 router.get('/cities', function (req, res) {
   City.find().then((cities) =>{
     res.json(cities);
@@ -39,6 +45,13 @@ router.put('/cities/:id', function (req,res) {
     res.render('city',{city});
   });
 });
+
+router.delete('/cities/:id', function (req,res) {
+  City.findOneAndDelete(req.params.id).then((city) =>{
+    res.render('city',{city});
+  });
+});
+
 
 
 module.exports = router;
