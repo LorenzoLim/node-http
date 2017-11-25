@@ -1,9 +1,13 @@
+const { mongoose, db } = require('../database');
 const express = require('express');
 let router = express.Router();
-let students = require('../students');
+let Student = require('../models/student');
+let City = require('../models/city');
 
 router.get('/students', function (req, res) {
-  res.send(students);
+  Student.find().populate('city').then((students) =>{
+    res.json(students);
+  });
 });
 
 router.post('/students', function (req, res) {
@@ -11,5 +15,30 @@ router.post('/students', function (req, res) {
   students.push(student);
   res.send(student);
 });
+
+router.put('/students/:id', function (req,res) {
+  Student.findOneAndUpdate(req.params.id, req.body).populate('city').then((student) =>{
+    res.render('student',{student});
+  });
+});
+
+router.get('/cities', function (req, res) {
+  City.find().then((cities) =>{
+    res.json(cities);
+  });
+});
+
+router.post('/cities', function (req, res) {
+  let city = req.body.name;
+  cities.push(city);
+  res.send(city);
+});
+
+router.put('/cities/:id', function (req,res) {
+  City.findOneAndUpdate(req.params.id, req.body).then((city) =>{
+    res.render('city',{city});
+  });
+});
+
 
 module.exports = router;

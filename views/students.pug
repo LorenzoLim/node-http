@@ -3,12 +3,15 @@ html
     title Hello!
   body
     - let name = "Scott"
-    h1= students
+    h1
     h1 Student list:
     ul
       each student in students
-        li= student
+        li= student.name + ' is from ' + student.city.name
     form(action='/students', method='POST')
       p Add a new student!
       input(name='student_name')
+      select(name='city_id')
+        each city in cities
+          option(value=city.id) #{city.name}
       input(type='submit')
