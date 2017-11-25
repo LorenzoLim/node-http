@@ -23,7 +23,7 @@ router.put('/students/:id', function (req,res) {
 });
 
 router.delete('/students/:id', function (req,res) {
-  Student.findOneAndDelete(req.params.id).populate('city').then((student) =>{
+  Student.findOneAndDelete(req.params.id).then((student) =>{
     res.render('student',{student});
   });
 });
