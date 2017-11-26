@@ -2,7 +2,7 @@ const { mongoose, db } = require('../database');
 const express = require('express');
 let router = express.Router();
 let Student = require('../models/student');
-let City = require('../models/city');
+let Cityu = require('../models/city');
 
 router.get('/students', function (req, res) {
   Student.find().populate('city').then((students) =>{
