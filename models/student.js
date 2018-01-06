@@ -4,5 +4,5 @@ const Student = db.model('Student', {
   name: String,
   city: { type: Schema.Types.ObjectId, ref: 'City'}
 });
- 
+
 module.exports = Student;
