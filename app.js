@@ -50,7 +50,7 @@ app.get('/cities', function (req, res) {
     res.render('cities', {cities});
   })
 });
- 
+
 app.post('/cities', function (req, res) {
   let city_name = req.body.city_name;
   City.create({name: city_name}).then(() =>{
