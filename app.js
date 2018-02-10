@@ -9,7 +9,7 @@ const City = require('./models/city');
 app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-
+ 
 app.use('/api', api);
 
 app.get('/students', (req, res) =>{
