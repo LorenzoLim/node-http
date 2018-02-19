@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
 app.use('/api', api);
-  
+
 app.get('/students', (req, res) =>{
   Promise.all([
     Student.find().populate('city'),
